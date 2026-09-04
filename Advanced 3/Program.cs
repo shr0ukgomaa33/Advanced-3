@@ -125,6 +125,56 @@
             #endregion
 
 
+
+            #region Exercise 3
+
+            Dictionary<string, string> phoneBook = new Dictionary<string, string>();
+
+            phoneBook.Add("Ahmed", "01012345678");
+            phoneBook.Add("Sara", "01123456789");
+            phoneBook.Add("Ali", "01234567890");
+            phoneBook.Add("Mona", "01534567890");
+
+
+            phoneBook["Youssef"] = "01098765432";
+
+            try
+            {
+                phoneBook.Add("Ahmed", "01099999999");
+            }
+            catch (ArgumentException ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
+            bool added = phoneBook.TryAdd("Sara", "01000000000");
+
+            Console.WriteLine("Was contact added? " + added);
+
+
+            bool found = phoneBook.ContainsKey("Omar");
+
+            Console.WriteLine("Omar exists: " + found);
+
+
+            string phone = phoneBook.TryGetValue("Omar", out string number)
+    ? number
+    : "Not Found";
+
+            Console.WriteLine("Omar's phone: " + phone);
+
+            Console.WriteLine("Keys:");
+            Console.WriteLine(string.Join(", ", phoneBook.Keys));
+
+            Console.WriteLine("Values:");
+            Console.WriteLine(string.Join(", ", phoneBook.Values));
+
+            #endregion
+
+
+
+
+
+
         }
     }
 }
